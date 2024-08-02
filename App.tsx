@@ -19,7 +19,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import useCachedResources from 'src/hooks/useCachedResources';
 import Navigation from 'src/navigation';
 import AppThemeContext from 'src/contexts/Theme.context';
-import { useAppTheme } from 'src/hooks/useColorScheme';
 import colorsConstants from 'src/constants/colors.constants';
 import { CustomToast } from 'src/components/alerts/toast.alert';
 
@@ -28,25 +27,6 @@ function App() {
   const colorScheme = useContext(AppThemeContext);
   const isLoadingComplete = useCachedResources();
   const [appTheme, setAppTheme] = useState<any>(null);
-  const [initialRouteName, setInitialRouteName] = useState<any>(undefined)
-
-  useEffect(() => {
-    useAppTheme().then((theme) => setAppTheme(theme)).catch((e) => console.log(e))
-  }, [])
-
-  useEffect(() => {
-    LogBox.ignoreLogs([
-      'VirtualizedLists should never be nested',
-      'Key "cancelled" in the image picker result is deprecated and will be removed in SDK 48, use "canceled" instead',
-      'This synthetic event is reused for performance reason',
-      'Possible Unhandled Promise Rejection',
-      'new NativeEventEmitter()',
-      'ReactImageView: Image source "null" doesn\'t exist',
-      'Sending `onAnimatedValueUpdate` with no listeners registered',
-      'Sentry Logger [warn]: You appear to have multiple versions of the "promise" package installed.'
-    ]);
-  }, [])
-
   if (!isLoadingComplete) {
     return null;
   }
@@ -56,7 +36,7 @@ function App() {
         flex: 1,
       }}
     >
-      <AppThemeContext.Provider value={appTheme || colorScheme}>
+      <AppThemeContext.Provider value={'dark'}>
         <StatusBar 
           translucent
           style={colorScheme === `dark` ? `light` : colorScheme === 'light' ? `dark` : `auto`}
@@ -70,7 +50,7 @@ function App() {
               loading={null} 
               persistor={persistor}
             >
-              <Navigation colorScheme={colorScheme} initialRouteName={initialRouteName} />
+              <Navigation colorScheme={colorScheme} />
               <CustomToast
               />
             </PersistGate>

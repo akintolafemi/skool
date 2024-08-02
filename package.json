@@ -59,8 +59,7 @@
     "react-native-web": "~0.19.6",
     "react-native-webview": "13.8.6",
     "react-redux": "^9.0.4",
-    "redux-persist": "^6.0.0",
-    "rn-wave-bottom-bar": "^2.2.36"
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
