@@ -2,8 +2,6 @@ import { PRODUCT_NAME } from "@env";
 
 export const APP_NAME = `${PRODUCT_NAME}`;
 const _APP_NAME = APP_NAME.toLowerCase().replace(" ", "-");
-export const APP_THEME = `${_APP_NAME}-APP-THEME`;
-export const APP_TOKEN = `${_APP_NAME}-APP-TOKEN`;
 export const APP_TOAST = `${_APP_NAME}-APP-TOAST`;
 export const imageTransition = 200; 
 export const imageLoadBlur = '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj['

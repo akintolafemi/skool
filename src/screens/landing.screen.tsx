@@ -41,7 +41,7 @@ export default function LandingScreen({ navigation, route }: RootStackScreenProp
           title={`Press Here to Start`}
           titleStyle={{
             color: colorsConstant.colorPrimary[900],
-            fontFamily: fontUtil.worksans_600
+            fontFamily: fontUtil.sfprodisplay_500
           }}
           icon={{
             name: `long-arrow-right`,

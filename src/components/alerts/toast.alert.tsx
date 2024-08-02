@@ -78,7 +78,7 @@ export const CustomToast = () => {
         : type === "success" ? 
         colorsConstants.success.primary
         : type === "error" ? 
-        colorsConstants.colorError
+        colorsConstants.colorDanger
         : colorsConstants.colorWarning,
       paddingVertical: fontUtils.h(15),
       alignItems: "center",
@@ -119,7 +119,7 @@ export const CustomToast = () => {
           fontSize: fontUtils.h(13),
           lineHeight: fontUtils.h(15),
           marginTop: fontUtils.h(5),
-          color: colorsConstants.colorWhiteOpaq["0.8"],
+          color: colorsConstants.convertToRgba(`#ffffff`, 0.8),
           paddingHorizontal: fontUtils.w(10),
         }}>
           {message}

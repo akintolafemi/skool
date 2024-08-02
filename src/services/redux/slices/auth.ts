@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { ImageSource } from 'expo-image';
 import { produce } from 'immer';
-import { APP_TOKEN } from 'src/constants/app.constants';
-import SecureStoreManager from 'src/utils/SecureStoreManager';
 
 const initialAuthState: {
   user: {
@@ -30,11 +28,6 @@ export const authSlice = createSlice({
       return state;
     },
     logout: (state) => {
-      SecureStoreManager.removeItemFromSecureStore(`${APP_TOKEN}`).then(() => {
-
-      }).catch((error) => {
-        console.log(error)
-      })
       state = {
         ...state,
         user: {

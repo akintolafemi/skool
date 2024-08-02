@@ -38,7 +38,7 @@ export const OptionsSelect = ({
         math={`${label || ""}`}
       /> */}
       <MathText
-            value={label}
+        value={label}
             // direction="ltr"
             // CellRendererComponent={<TouchableOpacity />}
         />

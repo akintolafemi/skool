@@ -11,8 +11,6 @@ const sfprodisplay_400 = 'sfprodisplay-regular';
 const sfprodisplay_500 = 'sfprodisplay-medium';
 const sfprodisplay_700 = 'sfprodisplay-bold';
 
-const worksans_600 = 'worksans-semibold';
-
 const lato_400 = 'lato-regular';
 const lato_700 = 'lato-bold';
 
@@ -25,8 +23,6 @@ export default {
     sfprodisplay_400,
     sfprodisplay_500,
     sfprodisplay_700,
-
-    worksans_600,
 
     lato_400,
     lato_700,

@@ -10,6 +10,8 @@ Skool
 
 This project is built using [React Native](http://reactnative.dev) & [Expo](http://docs.expo.dev). It is a cross-platform mobile application that allows students to attempt quizzes with a gamification feature.
 
+State management is done with Redux, @reduxjs/toolkit and immer
+
 ## Getting Started
 
 To get a local copy of the project up and running, follow these simple steps.

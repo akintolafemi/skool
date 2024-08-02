@@ -25,6 +25,8 @@ import { IconProps } from '@rneui/base';
 import { Icon as RNEIcon } from '@rneui/themed';
 
 
+//CREATE THEMED COMPONENTS
+
 export function useThemeColor(
   props: { light?: string; dark?: string },
   colorName: keyof typeof ColorsConstants.light & keyof typeof ColorsConstants.dark

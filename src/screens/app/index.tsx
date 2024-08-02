@@ -33,17 +33,30 @@ export default function AppScreen({
   const modalRef = useRef<Modalize>(null)
   const modalRefResult = useRef<Modalize>(null)
 
+  //show a welcome message before starting quiz
   const [ showWelcome, setShowWelcome ] = useState(true)
+  //to show quiz image in a modal
   const [ mediaElementVisible, setMediaElementVisible ] = useState(false)
+  //from quizzes repo, use this to hold current quiz index
   const [ quiz, setQuiz ] = useState(0)
+  //for results repo
   const [ results, setResults ] = useState<any[]>([])
+  //current question from quiz
   const [ activeQuestion, setActiveQuestion ] = useState(0)
+  //user selected answer. uses option index
   const [ selectedAnswer, setSelectedAnswer ] = useState(-1)
+  //all selected ansers from a single quiz
+  //this would be used to calculate total score for current quiz
   const [ selectedAnswers, setSelectedAnswers ] = useState<any>({})
+  //to display a timer
   const [ seconds, setSeconds ] = useState(0);
+  //total anserts the user got correctly in ctive quiz
   const [ totalCorrectAnsers, setTotalCorrectAnsers ] = useState(0)
+  //to display user result
   const [ showCorrectAnswers, setShowCorrectAnswers ] = useState(false)
 
+
+  //use react useMemo callback to set active quiz from quizzes repo
   const activeQuiz = useMemo(() => {
     return APP_QUIZZES[quiz]
   }, [quiz])
@@ -52,6 +65,8 @@ export default function AppScreen({
     return activeQuiz.questions
   }, [activeQuiz])
 
+  //using use effect to show timer
+  //only show timer when the first question shows or a new quiz is started
   useEffect(() => {
     let interval: string | number | NodeJS.Timeout | undefined;
     if (!showWelcome && !showCorrectAnswers) {
@@ -64,12 +79,14 @@ export default function AppScreen({
     return () => clearInterval(interval);
   }, [quiz, seconds, showWelcome]);
 
+  //diplaying timer in mins and seconds
   const formatTime = (totalSeconds: number) => {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
+  //since we're showing a welcome message, change the view to questions view after 7secs
   useEffect(() => {
     setTimeout(() => {
       setShowWelcome(false)
@@ -152,6 +169,7 @@ export default function AppScreen({
     });
   };
 
+  //DUMMY leaderboard
   const leaderBoard = useMemo(() => {
     const board = [{
       name: `Becca Rodes`,
@@ -171,6 +189,7 @@ export default function AppScreen({
       avatar: user?.avatar
     }]
 
+    //sort leaderboard from highest point to lowest
     return sortByKey(board, 'score')
   }, [calculateCumulativeScore])
   
@@ -444,6 +463,7 @@ export default function AppScreen({
                 setSeconds(0)
                 setActiveQuestion(0)
                 setSelectedAnswers({})
+                setSelectedAnswer(-1)
                 setResults([])
               }}
             >
@@ -463,20 +483,22 @@ export default function AppScreen({
         >
           <PieChart
             data={[{
-              value: calculateCumulativeScore,
+              value: calculateCumulativeScore || 0,
               // color: appColor[theme]
               color: colorsConstants.colorPrimary[900]
             }, {
-              value: 100 - calculateCumulativeScore,
+              value: 100 - (calculateCumulativeScore || 0),
               color: colorsConstants.colorPrimary[100]
             }]}
             donut
             innerRadius={60}
             radius={70}
             centerLabelComponent={() => (
-              <View>
+              <View style={{
+                alignItems: "center"
+              }}>
                 <Text style={{
-                  fontSize: fontUtils.h(20)
+                  fontSize: fontUtils.h(20),
                 }}>
                   {`${calculateCumulativeScore}%`}
                 </Text>

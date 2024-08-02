@@ -53,17 +53,6 @@ function RootNavigator({ initialRouteName="LandingScreen" }: {initialRouteName?:
 
   return (
     <Stack.Navigator
-      screenOptions={{
-
-      }}
-      screenListeners={{
-        beforeRemove: (e) => {
-          // console.log(e)
-        },
-        focus: (e) => {
-          // console.log(e)
-        },
-      }}
       initialRouteName={initialRouteName}
     >
       {AppRoutes(user).map((route: any) => {

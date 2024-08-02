@@ -1,15 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext } from "react"
 import { Icon, Text, View } from "./themed.components"
 import fontUtil from "src/utils/font.utils"
 import layoutConstant from "src/constants/layout.constants"
-import { LayoutChangeEvent, StyleProp, TextStyle, TouchableOpacity, ViewStyle, View as RNView, Keyboard } from "react-native"
+import { StyleProp, TextStyle, ViewStyle, View as RNView } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import colorsConstants from "src/constants/colors.constants"
-import { FlatList } from "react-native-gesture-handler"
 import AppThemeContext from "src/contexts/Theme.context"
-import Animated, { useAnimatedStyle, useSharedValue, withSpring } from "react-native-reanimated"
-import { DefaultInput } from "./inputs.components"
-import { useAppSelector } from "src/hooks/useReduxHooks"
 
 export const ScreenHeader = ({
   title = "Screen",
@@ -17,7 +13,6 @@ export const ScreenHeader = ({
     size: fontUtil.h(25),
     name: '',
     type: '',
-    color: colorsConstants.accent.accent
   },
   useThemeColorForIcon = false,
   onPressRightIcon = () => null,

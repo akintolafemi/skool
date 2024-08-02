@@ -24,9 +24,11 @@ import { CustomToast } from 'src/components/alerts/toast.alert';
 
 
 function App() {
+  //get default app theme (light by default)
   const colorScheme = useContext(AppThemeContext);
+  //load resources especially custom fonts
   const isLoadingComplete = useCachedResources();
-  const [appTheme, setAppTheme] = useState<any>(null);
+
   if (!isLoadingComplete) {
     return null;
   }
@@ -36,7 +38,7 @@ function App() {
         flex: 1,
       }}
     >
-      <AppThemeContext.Provider value={'dark'}>
+      <AppThemeContext.Provider value={'light'}>
         <StatusBar 
           translucent
           style={colorScheme === `dark` ? `light` : colorScheme === 'light' ? `dark` : `auto`}

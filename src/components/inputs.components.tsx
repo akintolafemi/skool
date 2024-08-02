@@ -87,32 +87,9 @@ export const DefaultInput = ({
           paddingRight: 0,
           marginBottom: fontUtil.w(20)
         }, containerStyle]}
-        rightIcon={ secureTextEntry ? (
-          <TouchableOpacity
-            onPress={() => setShowEntry(!showEntry)}
-          >
-            <Icon
-              name={showEntry ? `eye-off` : `eye`}
-              type="ionicon"
-              size={fontUtil.h(16)}
-              color={colorsConstant.textIconDisabled[theme]}
-              iconStyle={{
-                opacity: 0.5
-              }}
-              containerStyle={{
-                marginRight: fontUtil.w(10)
-              }}
-            />
-          </TouchableOpacity>
-        ) : undefined}
+        secureTextEntry={showEntry}
         {...props}
         errorMessage={errorMessage}
-        secureTextEntry={showEntry}
-        errorStyle={[defaultErrorMessageStyle, {
-          color: errorType === "success" ? colorsConstant.success[900] : errorType === "info" ? colorsConstant.textLabel[theme] : colorsConstant.colorDanger,
-          fontFamily: fontUtil.sfprodisplay_500,
-          fontSize: fontUtil.h(12)
-        }]}
       />
       {label && labelPosision === "bottom" ? (
         <Text style={[{
