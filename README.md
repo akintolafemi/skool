@@ -43,3 +43,13 @@ $ npm install
 # development
 $ npx expo start
 ```
+
+## Login Credentials
+
+Authentication is implemented with dummy credentials. To login, please use any of the following
+
+username: `test1@skool.com`,
+password: `password`
+
+username: `test2@skool.com`,
+password: `password2`
